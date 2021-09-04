@@ -143,7 +143,7 @@ define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'pdo_test');
-require_once('pdo.php');
+require_once('config.php');
 $db = new mPDO(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 ?>
 ```
