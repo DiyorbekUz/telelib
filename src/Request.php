@@ -19,77 +19,36 @@ abstract class Request
     public const TIMEOUT_DEFAULT = 10;
     public const CONNECT_TIMEOUT_DEFAULT = 7;
 
-    /**
-     * @var int
-     */
     public int $timeout = self::TIMEOUT_DEFAULT;
 
-    /**
-     * @var int
-     */
     public int $connect_timeout = self::CONNECT_TIMEOUT_DEFAULT;
 
-    /**
-     * @var array|null
-     */
     public ?array $last_response_info = null;
 
-    /**
-     * @var string
-     */
     protected string $token;
 
-    /**
-     * @var array
-     */
     protected array $params;
 
-    /**
-     * Request constructor.
-     *
-     * @param string $token
-     * @param array $params
-     */
     public function __construct(string $token, array $params = [])
     {
         $this->token = $token;
         $this->params = $params;
     }
 
-    /**
-     * @param int $timeout
-     * @return $this
-     */
     public function setTimeout(int $timeout): self
     {
         $this->timeout = $timeout;
         return $this;
     }
 
-    /**
-     * @param int $connect_timeout
-     * @return $this
-     */
     public function setConnectTimeout(int $connect_timeout): self
     {
         $this->connect_timeout = $connect_timeout;
         return $this;
     }
 
-    /**
-     * @param int $attempts
-     * @return mixed
-     * @throws ApiError
-     * @throws CurlError
-     */
     abstract public function sendRequest(int $attempts = 1);
 
-    /**
-     * Returns true if request was success
-     * @param int $attempts
-     * @return bool
-     * @throws ApiError
-     */
     public function tryToSend(int $attempts = 1): bool
     {
         try {
@@ -100,17 +59,11 @@ abstract class Request
         }
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return (string)json_encode($this->getRequestData(), JSON_THROW_ON_ERROR);
     }
 
-    /**
-     * @return array
-     */
     public function getRequestData(): array
     {
         $params = self::processingParams($this->params);
@@ -118,10 +71,6 @@ abstract class Request
         return $params;
     }
 
-    /**
-     * @param array $params
-     * @return array
-     */
     final private static function processingParams(array $params): array
     {
         $result = [];
@@ -150,17 +99,6 @@ abstract class Request
         return $result;
     }
 
-    /**
-     * @return string
-     */
-    abstract public static function getApiMethodName(): string;
-
-    /**
-     * @param int $attempts
-     * @return mixed
-     * @throws ApiError
-     * @throws CurlError
-     */
     final protected function request(int $attempts = 1)
     {
         $url = "https://api.telegram.org/bot{$this->token}/" . static::getApiMethodName();
