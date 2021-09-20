@@ -135,7 +135,7 @@ if ($request !== null) {
 }
 ```
 
-Connection
+Connection database
 ------------
 ```php
 <?php
@@ -160,3 +160,13 @@ if ($query->rows) {
 $db->query("UPDATE `customer` SET `email` = 'john-new-email@gmail.com' WHERE `id` = '2'");
 ```
 
+### SqLite 
+```php
+
+$db = new SQLite3('database.db');
+
+$results = $db->query('SELECT bar FROM foo');
+while ($row = $results->fetchArray()) {
+    var_dump($row);
+}
+```
