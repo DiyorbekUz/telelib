@@ -135,7 +135,7 @@ if ($request !== null) {
 }
 ```
 
-Initialize
+Connection
 ------------
 ```php
 <?php
