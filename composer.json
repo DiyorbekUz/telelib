@@ -1,6 +1,6 @@
 {
   "name": "DiyorbekUz/Telelib",
-  "description": "Eng: Simply PHP classes for make Telegram-bots \n UZB: Telegram-botlarni yaratish uchun oddiy PHP Framework (Library)",
+  "description": "Eng: Simply PHP classes for make Telegram-bots\n UZB: Telegram-botlarni yaratish uchun oddiy PHP Framework (Library)",
   "version": "2.0.0",
   "license": "GPL-3.0-only",
   "minimum-stability": "stable",
