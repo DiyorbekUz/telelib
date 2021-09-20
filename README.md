@@ -135,3 +135,28 @@ if ($request !== null) {
 }
 ```
 
+Initialize
+------------
+```php
+<?php
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'pdo_test');
+require_once('pdo.php');
+$db = new mPDO(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+?>
+```
+
+
+#### For example
+```php
+$query = $db->query("SELECT * FROM `customer` WHERE `name` LIKE 'John'");
+if ($query->rows) {
+    var_dump($query->row['email']); // string(14) "john@gmail.com"
+}
+```
+```php
+$db->query("UPDATE `customer` SET `email` = 'john-new-email@gmail.com' WHERE `id` = '2'");
+```
+
