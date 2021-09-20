@@ -44,7 +44,7 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-$token = '123456:AAAAAAAAAAAAAAA';
+$token = '123456:AAAAAAAAAAAAAAAA';
 $username = 'ExampleBot';
 $bot = new DiyorbekUz\Telelib\Bot($token, $username);
 
