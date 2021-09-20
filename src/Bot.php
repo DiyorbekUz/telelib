@@ -35,22 +35,10 @@ class Bot
      */
     protected string $token;
 
-    /**
-     * @var Username
-     */
     protected Username $username;
 
-    /**
-     * @var string
-     */
     protected string $default_parse_mode = self::PARSE_MODE_DEFAULT;
 
-    /**
-     * Bot constructor.
-     *
-     * @param string $token
-     * @param string $username
-     */
     public function __construct(string $token, string $username)
     {
         $this->token = $token;
@@ -129,18 +117,12 @@ class Bot
             $action === self::ACTION_UPLOAD_VIDEO_NOTE;
     }
 
-    /**
-     * @return string
-     */
+
     public function getDefaultParseMode(): string
     {
         return $this->default_parse_mode;
     }
 
-    /**
-     * @param string $parse_mode
-     * @return $this
-     */
     public function setDefaultParseMode(string $parse_mode): self
     {
         if (!self::checkParseMode($parse_mode)) {
@@ -150,10 +132,6 @@ class Bot
         return $this;
     }
 
-    /**
-     * @param string $parse_mode
-     * @return bool
-     */
     public static function checkParseMode(string $parse_mode): bool
     {
         return $parse_mode === self::PARSE_MODE_HTML ||
@@ -161,42 +139,23 @@ class Bot
             $parse_mode === self::PARSE_MODE_MARKDOWN_V2;
     }
 
-    /**
-     * Getting bot ID from token
-     *
-     * @return int
-     */
     public function getId(): int
     {
         return (int)substr($this->token, 0, strpos($this->token, ':'));
     }
 
-    /**
-     * Getting bot token
-     *
-     * @return string
-     */
+
     public function getToken(): string
     {
         return $this->token;
     }
 
-    /**
-     * Getting bot username
-     *
-     * @return Username
-     */
+
     public function getUsername(): Username
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $start_command
-     * @param bool|null $start_group
-     * @param string $url_format
-     * @return string
-     */
     public function getBotUrl(string $start_command = null, bool $start_group = null,
         string $url_format = Username::URL_FORMAT_DEFAULT): string
     {
