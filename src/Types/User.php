@@ -89,18 +89,18 @@ class User implements TypeInterface
     }
 
 
-    public function getFullName(bool $with_link = false, bool $use_username = false, string $parse_mode = TelegramBotsApi\Bot::PARSE_MODE_DEFAULT, string $url_format = TelegramBotsApi\Username::URL_FORMAT_DEFAULT): string
+    public function getFullName(bool $with_link = false, bool $use_username = false, string $parse_mode = Telelib\Bot::PARSE_MODE_DEFAULT, string $url_format = TelegramBotsApi\Username::URL_FORMAT_DEFAULT): string
     {
         $full_name = $this->first_name;
         if ($this->last_name !== null) {
             $full_name .= ' ' . $this->last_name;
         }
 
-        $full_name = TelegramBotsApi\Bot::filterString($full_name, $parse_mode);
+        $full_name = Telelib\Bot::filterString($full_name, $parse_mode);
 
         if ($with_link) {
             $link = $use_username && $this->username !== null ? $this->username->getUrl($url_format) : self::getUrlWithId($this->id);
-            return TelegramBotsApi\Bot::genLink($link, $full_name, $parse_mode);
+            return Telelib\Bot::genLink($link, $full_name, $parse_mode);
         }
 
         return $full_name;
